@@ -4,7 +4,9 @@
 
 NVIDIA_PCI_ID=10de
 GPU_PCI_CLASS_ID=0302
-SYSLOG_MESSAGE_PATTERN='^[A-Z][a-z]{2} [ 0123][0-9] [0-9]{2}:[0-9]{2}:[0-9]{2} [^ ]+ [^:]+:'
+SLE_MESSSAGE_PATTERN_PREFIX='([0-9]{4}-[0-1][0-9]-[0-3][0-9]T[0-2][0-4]:[0-6][0-9]:[0-6][0-9]\.[0-9]{6}\+[0-2]{2}:[0-9]{2}'
+CENTOS_MESSAGE_PATTERN_PREFIX='[A-Z][a-z]{2} [ 0123][0-9] [0-9]{2}:[0-9]{2}:[0-9]{2}'
+SYSLOG_MESSAGE_PATTERN="^($SLE_MESSSAGE_PATTERN_PREFIX)|($CENTOS_MESSAGE_PATTERN_PREFIX)) [^ ]+ [^:]+:"
 
 function setup() {
     load "test_helper/bats-support/load"
